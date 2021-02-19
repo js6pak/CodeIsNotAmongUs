@@ -19,7 +19,7 @@ namespace CodeIsNotAmongUs.Patches.RemovePlayerLimit
         {
             public static void Postfix(PlayerControl __instance)
             {
-                __instance.Field_21 = new Il2CppReferenceArray<Collider2D>(200);
+                __instance.hitBuffer = new Il2CppReferenceArray<Collider2D>(200);
             }
         }
 
@@ -48,7 +48,7 @@ namespace CodeIsNotAmongUs.Patches.RemovePlayerLimit
         {
             public static void Postfix()
             {
-                if (DestroyableSingleton<TutorialManager>.InstanceExists)
+                if (TutorialManager.InstanceExists)
                     return;
 
                 IsInCutscene = true;

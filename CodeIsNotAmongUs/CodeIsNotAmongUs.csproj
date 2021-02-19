@@ -4,13 +4,13 @@
         <Version>1.0.0</Version>
         <LangVersion>latest</LangVersion>
         <GameVersion>2020.12.9s</GameVersion>
-        <Mappings>NuclearPowered/Mappings:0.1.0-alpha.2</Mappings>
+        <Mappings>NuclearPowered/Mappings:0.1.2</Mappings>
     </PropertyGroup>
 
     <ItemGroup>
         <Deobfuscate Include="$(AmongUs)\BepInEx\plugins\Reactor-$(GameVersion).dll" />
 
-        <PackageReference Include="Reactor.OxygenFilter.MSBuild" Version="0.2.3" />
+        <PackageReference Include="Reactor.OxygenFilter.MSBuild" Version="0.2.7" />
     </ItemGroup>
 
     <Target Name="Copy" AfterTargets="Reobfuscate">

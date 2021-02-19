@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
 
@@ -42,10 +44,16 @@ namespace CodeIsNotAmongUs.Patches.RemovePlayerLimit
             }
         }
 
-        [HarmonyPatch(typeof(PlayerTab.OnEnable__0), nameof(PlayerTab.OnEnable__0.Method_Internal_Void_0))] // inlined SelectColor
+        // [HarmonyPatch(typeof(PlayerTab.c__DisplayClass10_0), nameof(PlayerTab.c__DisplayClass10_0.OnEnable))] // inlined SelectColor
+        [HarmonyPatch]
         public static class SelectColorPatch
         {
-            public static bool Prefix(PlayerTab.OnEnable__0 __instance)
+            public static IEnumerable<MethodBase> TargetMethods()
+            {
+                yield return typeof(PlayerTab.c__DisplayClass10_0).GetMethod("Method_Internal_Void_0"); // TODO unhollower being mean
+            }
+
+            public static bool Prefix(PlayerTab.c__DisplayClass10_0 __instance)
             {
                 var colorId = __instance.j;
 
